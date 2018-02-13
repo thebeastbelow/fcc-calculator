@@ -1,0 +1,57 @@
+@for $i from 0 through 9 {
+  #nm#{$i} { grid-area: nm#{$i} }
+}
+
+@each $button in alc, cen, div, mul, min, pls, eql, dot {
+  ##{$button} {
+    grid-area: #{$button};
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+$buttonColor: #ebebeb;
+$clearColor: #e02715;
+
+.grid-item {
+  border: none;
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: $buttonColor;
+  border-bottom: 2px solid darken($buttonColor, 20%);
+  border-right: 2px solid darken($buttonColor, 20%);
+}
+
+.grid-item:active {
+  border: none;
+  margin-top: 3px;
+  margin-left: 3px;
+  position: relative;
+}
+
+.clear {
+  color: #eee;
+  font-size: 18px;
+  background-color: $clearColor;
+  border-bottom: 2px solid darken($clearColor, 5%);
+  border-right: 2px solid darken($clearColor, 5%);
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "alc cen div mul"
+    "nm7 nm8 nm9 min"
+    "nm4 nm5 nm6 pls"
+    "nm1 nm2 nm3 eql"
+    "nm0 nm0 dot eql";
+  grid-template-rows: repeat(5, 54px);
+  grid-template-columns: repeat(4, 22%);
+}
+
+#pad {
+  padding-top: 10px;
+}
