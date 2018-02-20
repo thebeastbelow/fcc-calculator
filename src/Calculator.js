@@ -79,9 +79,9 @@ class Calculator extends React.PureComponent {
             catch (e) {
               console.log(e);
             }
-            this.calculated = (
-              result !== null && result !== "Infinity"
-                && result !== "NaN" && result !== undefined
+            this.calculated = !(
+              result === null || result === Infinity
+                || Number.isNaN(result) || result === undefined
             );
             this.error = !this.calculated;
             return {
