@@ -1,21 +1,22 @@
 import React from 'react';
 import './Screen.css'
 
-class Screen extends React.Component {
-  componentDidMount() {
-    this.input.focus();
-  }
-
+class Screen extends React.PureComponent {
   render() {
     return (
       <div id="screen">
-        <input
+        <div
           id="input"
-          value={this.props.value}
-          type="text"
-          ref={input => {this.input = input}}
-          className="text-right" />
-        <p id="history" className="text-right">hist</p>
+          className="text-right"
+          ref={this.props.screenRef} >
+            {this.props.screenValue}
+          </div>
+        <p
+          id="history"
+          className="text-right"
+          ref={this.props.historyRef} >
+            {this.props.historyValue}
+          </p>
       </div>
     );
   }

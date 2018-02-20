@@ -1,50 +1,58 @@
 import React from 'react';
 import './Numpad.css'
 
-function Button(props) {
-  const buttonName = props.button;
-  let id;
-  switch(buttonName) {
-    case 'AC':
-      id = 'alc';
-      break;
-    case 'CE':
-      id = 'cen';
-      break;
-    case '÷':
-      id = 'div';
-      break;
-    case '×':
-      id = 'mul';
-      break;
-    case '−':
-      id = 'min';
-      break;
-    case '+':
-      id = 'pls';
-      break;
-    case '=':
-      id = 'eql';
-      break;
-    case '.':
-      id = 'dot';
-      break;
-    default:
-      id = 'nm' + buttonName;
+class Button extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.generateId.bind(this)();
   }
-  return (
-    <button
-      type="button"
-      id={id}
-      onClick={() => props.onClick(buttonName)}
-      className={"grid-item" + (
-        ["AC", "CE"].includes(buttonName) ?
-        " clear" :
-        ""
-      )}>
-        {buttonName}
-      </button>
-  );
+
+  generateId() {
+    switch(this.props.button) {
+      case 'AC':
+        this.id = 'alc';
+        break;
+      case 'CE':
+        this.id = 'cen';
+        break;
+      case '÷':
+        this.id = 'div';
+        break;
+      case '×':
+        this.id = 'mul';
+        break;
+      case '−':
+        this.id = 'min';
+        break;
+      case '+':
+        this.id = 'pls';
+        break;
+      case '=':
+        this.id = 'eql';
+        break;
+      case '.':
+        this.id = 'dot';
+        break;
+      default:
+        this.id = 'nm' + this.props.button;
+    }
+  }
+
+  render() {
+    return (
+      <button
+        type="button"
+        id={this.id}
+        onClick={() => this.props.onClick(this.props.button)}
+        className={"grid-item" + (
+          ["alc", "cen"].includes(this.id) ?
+          " clear" :
+          ""
+        )}>
+          {this.props.button}
+        </button>
+    );
+  }
 }
 
 function Grid(props) {

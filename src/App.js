@@ -6,7 +6,7 @@ function WorksOfflineAlert() {
   return (
     <div className="row justify-content-center">
       <div className="col-lg-6 col-md-8 col-sm-12">
-        <div id="works-offline-alert" className="text-center alert alert-info alert-dismissible fade show" role="alert">
+        <div id="works-offline-alert" className="d-none alert alert-info alert-dismissible fade show" role="alert">
           <strong>This web app works offline!</strong>
           <button type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
